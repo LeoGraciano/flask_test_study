@@ -1,0 +1,29 @@
+{% extends "laoyouts/__base_page.html" %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+{% block content %}
+
+
+<form action="" method="post">
+    {{form.csrf_token}}
+    <div class="row g-3 needs-validation" novalidate>
+
+        <div class="col-md-4">
+            {{form.email.label(class_="form-label")}}
+            {{form.email(class_="form-control")}}
+        </div>
+        <div class="col-md-4">
+            {{form.password.label(class_="form-label")}}
+            {{form.password(class_="form-control")}}
+        </div>
+        <div class="col-12">
+            {{form.submit(class_="btn btn-success")}}
+        </div>
+    </div>
+</form>
+
+
+{% endblock content %}

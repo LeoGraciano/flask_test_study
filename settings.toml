@@ -1,0 +1,21 @@
+[default]
+FLASK_DEBUG=false
+FLASK_TESTING=false
+SQLALCHEMY_TRACK_MODIFICATIONS =  false
+EXTENSIONS = [
+    "app.ext:init_app"
+    ]
+SECRET_KEY='secret'
+
+[production]
+
+
+[development]
+FLASK_DEBUG=true
+SQLALCHEMY_DATABASE_URI='sqlite:///developoment.sqlite'
+
+[testing]
+WTF_CRSF_ENABLED=false
+FLASK_DEBUG=true
+FLASK_TESTING=true
+SQLALCHEMY_DATABASE_URI='sqlite:///'

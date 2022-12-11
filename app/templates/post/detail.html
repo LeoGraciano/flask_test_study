@@ -1,0 +1,41 @@
+{% extends "laoyouts/__base_page.html" %}
+
+{% block title %}
+{{post.title}}
+{% endblock title %}
+
+{% block content %}
+
+<h2>{{post.title}}</h2>
+<p>{{post.content}}</p>
+<span>{{ 'Publicado' if post.published else 'Rascunho' }} - {{post.author.name}}</span>
+
+<form action="" method="delete" id="form-delete">
+    <button class="btn btn-danger btn-sm">Excluir</button>
+</form>
+
+{% endblock content %}
+
+{% block js %}
+<script>
+    const form = document.getElementById('form-delete');
+    form.onsubmit = async function (e) {
+        e.preventDefault();
+        const option = {
+            method: 'delete'
+        }
+        const url = location.href
+        const resp = await fetch(url, option).then((response) => {
+            return response.json()
+        }).catch((error) => console
+            .error(error))
+
+        try {
+            window.location.href(resp.delete)
+        } catch (error) {
+            console.error(error)
+        }
+
+    }
+</script>
+{% endblock js %}
